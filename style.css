@@ -1,0 +1,283 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-image: url("chalkboard.jpg");
+  color: white;
+}
+
+body .top-layer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  letter-spacing: 0.5rem;
+  font-family: "Akaya Kanadaka", cursive;
+}
+
+body .top-layer h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+body .top-layer .player-turn {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+body .middle-layer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body .middle-layer #turn-order {
+  font-size: 3rem;
+  letter-spacing: 0.5rem;
+  font-family: "Akaya Kanadaka", cursive;
+  margin-right: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body .middle-layer #turn-order #xButton,
+body .middle-layer #turn-order #oButton,
+body .middle-layer #turn-order #rButton {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: auto;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  color: #fff;
+  background-color: #000;
+  border-radius: 10px;
+  border: solid 2px #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .middle-layer #grid {
+  width: 512px;
+  height: 512px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background: #ccc;
+}
+
+body .middle-layer #grid .cell {
+  border: 2px solid black;
+}
+
+body .middle-layer #board-size {
+  font-size: 3rem;
+  letter-spacing: 0.5rem;
+  font-family: "Akaya Kanadaka", cursive;
+  margin-right: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body .middle-layer #board-size #smallBoard,
+body .middle-layer #board-size #mediumBoard,
+body .middle-layer #board-size #largeBoard,
+body .middle-layer #board-size #randomBoard {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: auto;
+  margin-left: 2rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  color: #fff;
+  background-color: #000;
+  border-radius: 10px;
+  border: solid 2px #fff;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body .bottom-layer {
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+  font-family: "Akaya Kanadaka", cursive;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .bottom-layer .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .bottom-layer .top #onePlayer,
+body .bottom-layer .top #twoPlayer {
+  width: 4.5rem;
+  height: 4.5rem;
+  color: #fff;
+  background-color: #000;
+  border-radius: 10px;
+  border: solid 2px #fff;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+body .bottom-layer .top #onePlayer {
+  margin-right: 3rem;
+}
+
+body .bottom-layer .top #twoPlayer {
+  margin-left: 3rem;
+}
+
+body .bottom-layer .bottom {
+  margin-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body .bottom-layer .bottom .xScore {
+  margin-right: 2rem;
+}
+
+body .bottom-layer .bottom .oScore {
+  margin-left: 2rem;
+}
+
+body .change-settings #reset,
+body .change-settings #settings {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: auto;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  color: #fff;
+  background-color: #000;
+  border-radius: 10px;
+  border: solid 2px #fff;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .change-settings #reset {
+  margin-right: 3rem;
+}
+
+body .change-settings #settings {
+  margin-left: 3rem;
+}
+
+body .modal {
+  height: 100vh;
+  position: fixed;
+  visibility: hidden;
+  display: none;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+body .modal-content {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 512px;
+  position: fixed;
+  background-color: #fefefe;
+  text-align: left;
+  padding: 1rem;
+  letter-spacing: 0;
+  color: black;
+}
+/*# sourceMappingURL=style.css.map */

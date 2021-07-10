@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="app.js" defer type="module"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&display=swap"
+      rel="stylesheet"
+    />
+    <title>The Arcade</title>
+  </head>
+  <body>
+    <div class="top-layer">
+    <h1>Tic Tac Toe</h1>
+    <div class="player-turn">Player's Turn</div>
+    <div class="middle-layer">
+      <!-- <div id="turn-order">
+        <button class="btn button-default" id="xButton">X</button>
+        <button class="btn button-default" id="oButton">O</button>
+        <button class="btn button-default" id="rButton">Random</button>
+      </div> -->
+      <div id="box">
+        <div id="box-grid">
+          <section id="grid"></section>
+          <div class="grid-small"></div>
+          <div class="grid-medium"></div>
+          <div class="grid-large"></div>
+        </div>
+      </div>
+      <!-- <div id="board-size">
+        <button class="btn button-default" id="smallBoard">3x3</button>
+        <button class="btn button-default" id="mediumBoard">4x4</button>
+        <button class="btn button-default" id="largeBoard">5x5</button>
+        <button class="btn button-default" id="randomBoard">Random</button>
+      </div> -->
+    </div>
+    <div class="bottom-layer">
+      <!-- <div class="top">
+        <button class="btn button-default" id="onePlayer">Single</br>Player</button>
+        <button class="btn button-default" id="twoPlayer">Two</br>Player</button>
+      </div> -->
+      <div class="bottom">
+        <div class="xScore">X Wins: 0</div>
+        <div class="oScore">O Wins: 0</div>
+      </div>
+    </div>
+    <div class="change-settings">
+      <button class="btn button-default" id="reset">Reset</button>
+      <button class="btn button-default" id="settings">Settings</button>
+    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <form id="form" action="" method="">
+          <p>Number of Players</p><br>
+          <!-- <input type="radio" id="onePlayer" name="players"> -->
+          <input type="radio" id="onePlayer" name="players" value="1" checked>
+          <label for="players">One</label><br>
+          <input type="radio" id="twoPlayers" name="players" value="2">
+          <label for="players">Two</label><br><br>
+          <label for="oneName">First Player Name:</label>
+          <input type="text" id="oneName" name="oneName" value="Player One"><br><br>
+          <label for="twoName">Second Player Name:</label>
+          <input type="text" id="twoName" name="twoName" value="Player Two"><br>
+          <br><p>Choose X or O (Player One)</p><br> 
+          <!-- <input type="radio" id="xChosen" name="xOrO"> -->
+          <input type="radio" id="xChosen" name="xOrO" value="X" checked>
+          <label for="xOrO">X</label><br>
+          <input type="radio" id="oChosen" name="xOrO" value="O">
+          <label for="xOrO">O</label><br><br>
+          <br><p>Size of Board</p><br> 
+          <input type="radio" id="threeBoard" name="boardSize" value="9" checked>
+          <!-- <input type="radio" id="threeBoard" name="boardSize"> -->
+          <label for="boardSize">3x3</label><br>
+          <input type="radio" id="fourBoard" name="boardSize" value="16">
+          <label for="boardSize">4x4</label><br>
+          <input type="radio" id="fiveBoard" name="boardSize" value="25">
+          <label for="boardSize">5x5</label><br><br>
+          <br><p>Difficulty</p><br> 
+          <input type="radio" id="easyMode" name="difficulty" value="easy" checked>
+          <!-- <input type="radio" id="easyMode" name="difficulty"> -->
+          <label for="difficulty">Easy</label><br>
+          <!-- <input type="radio" id="mediumMode" name="difficulty" value="medium">
+          <label for="difficulty">Medium</label><br> -->
+          <input type="radio" id="hardMode" name="difficulty" value="hard">
+          <label for="difficulty">Hard</label><br><br>
+          <button class="action confirmSettings" id="confirmSettings">Confirm</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
