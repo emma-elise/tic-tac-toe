@@ -1,26 +1,40 @@
-import {
-  applySettings,
-  settingsChosen,
-  buildGrid,
-  takeTurns,
-} from "./settings.js";
-import { gameWon } from "./rules.js";
+import { applySettings, buildGrid, takeTurns } from "./settings.js";
 
-export { gameState };
-
-const gameState = {
+var myStore = {
+  gameWon: false,
+  settingsChosen: false,
+  turnNumber: 0,
+  gameActive: false,
+  oSelected: false,
+  xSelected: false,
+  currentPlayer: "X",
+  player: "",
+  cpu: "",
+  currentIndex: 0,
+  boardSize: 1,
+  playerCount: 1,
+  firstPlayerName: "",
+  secondPlayerName: "",
+  xOrOCheck: "X",
+  sizeCheck: 9,
+  difficultyCheck: "easy",
   board: [null, null, null, null, null, null, null, null, null],
 };
 
-function buildGame() {
-  applySettings();
-  buildGrid();
-  takeTurns();
-  if (settingsChosen === false || gameWon === false) {
+console.log("myStore", myStore);
+
+const buildGame = (myStore) => {
+  applySettings(myStore);
+  console.log("Do we hit this?");
+  buildGrid(myStore);
+  takeTurns(myStore);
+  if (myStore.settingsChosen === false || myStore.gameWon === false) {
     return;
   } else {
-    buildGrid();
+    buildGrid(myStore);
   }
-}
+};
 
-buildGame();
+buildGame(myStore);
+
+export { myStore };

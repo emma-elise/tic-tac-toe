@@ -1,167 +1,173 @@
-import { gameState } from "./app.js";
-import { gameWon, checkForWin } from "./rules.js";
-import { cpuTakesTurn } from "./difficulty.js";
+import cpuTakesTurn from "./difficulty.js";
+import { checkForWin } from "./rules.js";
+import styling from "./Styling.js";
 
-export {
-  playerCount,
-  xOrOCheck,
-  difficultyCheck,
-  applySettings,
-  settingsChosen,
-  confirmSettings,
-  buildGrid,
-  cpu,
-  currentPlayer,
-  fiveBoard,
-  fourBoard,
-  threeBoard,
-  takeTurns,
-  turnNumber,
-};
-
-// Game load / no special settings chosen
-let settingsChosen = false;
-
-// User confirms settings
-let playerCount = 1;
-let firstPlayerName = "";
-let secondPlayerName = "";
-let xOrOCheck = "X";
-let sizeCheck = 9;
-let difficultyCheck = "easy";
-
-// Apply settings to game board
-let threeBoard = true;
-let fourBoard = false;
-let fiveBoard = false;
-
-// Take turns
-let turnNumber = 0;
-let gameActive = false;
-let oSelected = false;
-let xSelected = false;
-let currentPlayer = "X";
-let player = "";
-let cpu = "";
-
-function openSettings() {
+const openSettings = (myStore) => {
   $("#settings").click(function () {
-    settingsChosen = false;
+    myStore = {
+      ...myStore,
+      settingsChosen: false,
+    };
+    //settingsChosen = false;
     $(".modal").css({ display: "block", visibility: "visible" });
   });
 
   document.onkeydown = function (event) {
     event = event || window.event;
-    if (event.keyCode == 27) {
+    if (event.key == escape) {
       $(".modal").css({ display: "none", visibility: "none" });
     }
   };
-}
+};
 
-function confirmSettings() {
+const confirmSettings = (myStore) => {
   $("#confirmSettings").click(function () {
-    event.preventDefault();
-    playerCount = $("input[name='players']:checked").val();
-    xOrOCheck = $("input[name='xOrO']:checked").val();
-    sizeCheck = $("input[name='boardSize']:checked").val();
-    difficultyCheck = $("input[name='difficulty']:checked").val();
-    firstPlayerName = $("input[name='oneName']").val();
-    secondPlayerName = $("input[name='twoName']").val();
-    $(".modal").css({ display: "none", visibility: "none" });
+    //event.preventDefault();
+    myStore = {
+      ...myStore,
+      playerCount: $("input[name='players']:checked").val(),
+      xOrOCheck: $("input[name='xOrO']:checked").val(),
+      sizeCheck: $("input[name='boardSize']:checked").val(),
+      difficultyCheck: $("input[name='difficulty']:checked").val(),
+      firstPlayerName: $("input[name='oneName']").val(),
+      secondPlayerName: $("input[name='twoName']").val(),
+    };
+    // $(".modal").css({ display: "none", visibility: "none" });
   });
 
-  if (xOrOCheck === "X") {
-    xSelected === true;
-  } else if (xOrOCheck === "O") {
-    oSelected === true;
+  if (myStore.xOrOCheck === "X") {
+    myStore.xSelected === true;
+  } else if (myStore.xOrOCheck === "O") {
+    myStore.oSelected === true;
   }
 
-  if (sizeCheck === 9) {
-    threeBoard = true;
-    fourBoard = false;
-    fiveBoard = false;
-  } else if (sizeCheck === 16) {
-    threeBoard = false;
-    fourBoard = true;
-    fiveBoard = false;
-  } else if (sizeCheck === 25) {
-    threeBoard = false;
-    fourBoard = false;
-    fiveBoard = true;
+  if (myStore.sizeCheck === 9) {
+    console.log("9");
+    myStore = {
+      ...myStore,
+      boardSize: 1,
+    };
+  } else if (myStore.sizeCheck === 16) {
+    console.log("16");
+    myStore = {
+      ...myStore,
+      boardSize: 2,
+    };
+  } else if (myStore.sizeCheck === 25) {
+    console.log("25");
+    myStore = {
+      ...myStore,
+      boardSize: 3,
+    };
   }
-}
+};
 
-function applySettings() {
-  settingsChosen = true;
+const applySettings = (myStore) => {
+  myStore = {
+    ...myStore,
+    settingsChosen: true,
+  };
+  //settingsChosen = true;
+  openSettings(myStore);
+  confirmSettings(myStore);
+  console.log("ApplySettings");
+};
 
-  openSettings();
-  confirmSettings();
-}
-
-function buildGrid() {
+const buildGrid = (myStore) => {
+  console.log("Am I firing?");
   $("#grid .cell").remove();
 
-  for (let i = 0; i < gameState.board.length; i++) {
-    gameState.board.splice(gameState.board[i], 1, null);
+  for (let i = 0; i < myStore.board.length; i++) {
+    myStore.board.splice(myStore.board[i], 1, null);
     $("#grid").append($('<div class="cell"></div>'));
-    if (threeBoard === true) {
-      $("#grid .cell").css({
-        flex: "1 0 170.67px",
-      });
-    } else if (fourBoard === true) {
-      $("#grid .cell").css({
-        flex: "0 0 128px",
-      });
-    } else if (fiveBoard === true) {
-      $("#grid .cell").css({
-        flex: "0 0 102.4px",
-      });
+    switch (myStore.boardSize) {
+      case 1:
+        $("#grid .cell").css({
+          flex: "1 0 170.67px",
+        });
+        break;
+      case 2:
+        $("#grid .cell").css({
+          flex: "0 0 128px",
+        });
+        break;
+      case 3:
+        $("#grid .cell").css({
+          flex: "0 0 102.4px",
+        });
+        break;
     }
   }
-}
+};
 
-function turnOrder() {
-  if (turnNumber === 0 && settingsChosen === false) {
-    currentPlayer = "X";
-  } else if (turnNumber % 2 === 0) {
-    currentPlayer = "O";
-  } else {
-    currentPlayer = "X";
+const turnOrder = (myStore) => {
+  if (myStore.turnNumber === 0 && !myStore.settingsChosen) {
+    return "X";
+  } else if (myStore.turnNumber % 2 === 0) {
+    return "O";
   }
-}
+  return "X";
+};
 
-const counter = () => turnNumber++;
+const counter = (myStore) => {
+  let value = myStore.turnNumber++;
+  myStore = {
+    ...myStore,
+    turnNumber: value,
+  };
+};
 
-function takeTurns() {
+const takeTurns = (myStore) => {
   $(".cell").click(function () {
-    let currentIndex = $(".cell").index(this);
-    if (player === "") player = "X";
-    if (cpu === "") cpu = "O";
+    let value = $(".cell").index(this);
+    myStore = {
+      ...myStore,
+      currentIndex: value,
+    };
+    if (!myStore.player) {
+      myStore = {
+        ...myStore,
+        player: "X",
+      };
+    }
+
+    if (!myStore.cpu) {
+      myStore = {
+        ...myStore,
+        cpu: "O",
+      };
+    }
+
     if (
-      gameState.board[currentIndex] === player ||
-      gameState.board[currentIndex] === cpu
+      myStore.board[myStore.currentIndex] === myStore.player ||
+      myStore.board[myStore.currentIndex] === myStore.cpu
     ) {
       return;
     } else {
-      if (gameWon === true) return;
-      if (oSelected === false) {
-        turnOrder();
-        gameActive = true;
+      if (myStore.gameWon) return;
+      if (!myStore.oSelected) {
+        let newValue = turnOrder(myStore);
+        myStore = {
+          ...myStore,
+          currentPlayer: newValue,
+          gameActive: true,
+        };
       }
-      $(this).html(player).css({
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontSize: "36px",
-        fontWeight: "bold",
-        color: "black",
-      });
-      gameState.board.splice(currentIndex, 1, player);
-      checkForWin();
-      if (gameWon === false && playerCount === 1) {
-        cpuTakesTurn();
+      $(this).html(myStore.player).css(styling);
+      myStore.board.splice(myStore.currentIndex, 1, myStore.player);
+      console.log("board size", myStore.boardSize);
+      let newNewValue = checkForWin(myStore);
+      myStore = {
+        ...myStore,
+        gameWon: newNewValue,
+      };
+      //gameWon = checkForWin(boardSize, currentPlayer);
+      if (!myStore.gameWon && myStore.playerCount === 1) {
+        cpuTakesTurn(myStore);
       }
     }
   });
-  counter();
-}
+  counter(myStore);
+};
+
+export { applySettings, confirmSettings, buildGrid, takeTurns };

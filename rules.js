@@ -1,242 +1,265 @@
-import { gameState } from "./app.js";
-import { threeBoard, fourBoard, fiveBoard, currentPlayer } from "./settings.js";
+import { myStore } from "./app.js";
 
-export { gameWon, checkForWin };
+let valid = false;
 
-let gameWon = false;
-
-function threeBoardWinConditons() {
+const threeBoardWinConditons = (currentPlayer, board) => {
   if (
-    gameState.board[0] === currentPlayer &&
-    gameState.board[1] === currentPlayer &&
-    gameState.board[2] === currentPlayer
+    board[0] === currentPlayer &&
+    board[1] === currentPlayer &&
+    board[2] === currentPlayer
   ) {
-    gameWon = true;
+    valid = true;
+    return valid;
   } else if (
-    gameState.board[3] === currentPlayer &&
-    gameState.board[4] === currentPlayer &&
-    gameState.board[5] === currentPlayer
+    board[3] === currentPlayer &&
+    board[4] === currentPlayer &&
+    board[5] === currentPlayer
   ) {
-    gameWon = true;
+    valid = true;
+    return valid;
   } else if (
-    gameState.board[6] === currentPlayer &&
-    gameState.board[7] === currentPlayer &&
-    gameState.board[8] === currentPlayer
+    board[6] === currentPlayer &&
+    board[7] === currentPlayer &&
+    board[8] === currentPlayer
   ) {
-    gameWon = true;
+    valid = true;
+    return valid;
   } else if (
-    gameState.board[0] === currentPlayer &&
-    gameState.board[3] === currentPlayer &&
-    gameState.board[6] === currentPlayer
+    board[0] === currentPlayer &&
+    board[3] === currentPlayer &&
+    board[6] === currentPlayer
   ) {
-    gameWon = true;
+    valid = true;
+    return valid;
   } else if (
-    gameState.board[1] === currentPlayer &&
-    gameState.board[4] === currentPlayer &&
-    gameState.board[7] === currentPlayer
+    board[1] === currentPlayer &&
+    board[4] === currentPlayer &&
+    board[7] === currentPlayer
   ) {
-    gameWon = true;
+    valid = true;
+    return valid;
   } else if (
-    gameState.board[2] === currentPlayer &&
-    gameState.board[5] === currentPlayer &&
-    gameState.board[8] === currentPlayer
+    board[2] === currentPlayer &&
+    board[5] === currentPlayer &&
+    board[8] === currentPlayer
   ) {
-    gameWon = true;
+    valid = true;
+    return valid;
   } else if (
-    gameState.board[0] === currentPlayer &&
-    gameState.board[4] === currentPlayer &&
-    gameState.board[8] === currentPlayer
+    board[0] === currentPlayer &&
+    board[4] === currentPlayer &&
+    board[8] === currentPlayer
   ) {
-    gameWon = true;
+    valid = true;
+    return valid;
   } else if (
-    gameState.board[2] === currentPlayer &&
-    gameState.board[4] === currentPlayer &&
-    gameState.board[6] === currentPlayer
+    board[2] === currentPlayer &&
+    board[4] === currentPlayer &&
+    board[6] === currentPlayer
   ) {
-    gameWon = true;
+    valid = true;
+    return valid;
   }
-}
+  return valid;
+};
 
-function fourBoardWinConditions() {
+const fourBoardWinConditions = (currentPlayer, board) => {
   if (
-    gameState.board[0] === currentPlayer &&
-    gameState.board[1] === currentPlayer &&
-    gameState.board[2] === currentPlayer &&
-    gameState.board[3] === currentPlayer
+    board[0] === currentPlayer &&
+    board[1] === currentPlayer &&
+    board[2] === currentPlayer &&
+    board[3] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[4] === currentPlayer &&
-    gameState.board[5] === currentPlayer &&
-    gameState.board[6] === currentPlayer &&
-    gameState.board[7] === currentPlayer
+    board[4] === currentPlayer &&
+    board[5] === currentPlayer &&
+    board[6] === currentPlayer &&
+    board[7] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[8] === currentPlayer &&
-    gameState.board[9] === currentPlayer &&
-    gameState.board[10] === currentPlayer &&
-    gameState.board[11] === currentPlayer
+    board[8] === currentPlayer &&
+    board[9] === currentPlayer &&
+    board[10] === currentPlayer &&
+    board[11] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[12] === currentPlayer &&
-    gameState.board[13] === currentPlayer &&
-    gameState.board[14] === currentPlayer &&
-    gameState.board[15] === currentPlayer
+    board[12] === currentPlayer &&
+    board[13] === currentPlayer &&
+    board[14] === currentPlayer &&
+    board[15] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[0] === currentPlayer &&
-    gameState.board[4] === currentPlayer &&
-    gameState.board[8] === currentPlayer &&
-    gameState.board[12] === currentPlayer
+    board[0] === currentPlayer &&
+    board[4] === currentPlayer &&
+    board[8] === currentPlayer &&
+    board[12] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[1] === currentPlayer &&
-    gameState.board[5] === currentPlayer &&
-    gameState.board[9] === currentPlayer &&
-    gameState.board[13] === currentPlayer
+    board[1] === currentPlayer &&
+    board[5] === currentPlayer &&
+    board[9] === currentPlayer &&
+    board[13] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[2] === currentPlayer &&
-    gameState.board[6] === currentPlayer &&
-    gameState.board[10] === currentPlayer &&
-    gameState.board[14] === currentPlayer
+    board[2] === currentPlayer &&
+    board[6] === currentPlayer &&
+    board[10] === currentPlayer &&
+    board[14] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[3] === currentPlayer &&
-    gameState.board[7] === currentPlayer &&
-    gameState.board[11] === currentPlayer &&
-    gameState.board[15] === currentPlayer
+    board[3] === currentPlayer &&
+    board[7] === currentPlayer &&
+    board[11] === currentPlayer &&
+    board[15] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[0] === currentPlayer &&
-    gameState.board[5] === currentPlayer &&
-    gameState.board[10] === currentPlayer &&
-    gameState.board[15] === currentPlayer
+    board[0] === currentPlayer &&
+    board[5] === currentPlayer &&
+    board[10] === currentPlayer &&
+    board[15] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[3] === currentPlayer &&
-    gameState.board[6] === currentPlayer &&
-    gameState.board[9] === currentPlayer &&
-    gameState.board[12] === currentPlayer
+    board[3] === currentPlayer &&
+    board[6] === currentPlayer &&
+    board[9] === currentPlayer &&
+    board[12] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   }
-}
+  return false;
+};
 
-function fiveBoardWinConditions() {
+const fiveBoardWinConditions = (currentPlayer, board) => {
   if (
-    gameState.board[0] === currentPlayer &&
-    gameState.board[5] === currentPlayer &&
-    gameState.board[10] === currentPlayer &&
-    gameState.board[15] === currentPlayer &&
-    gameState.board[20] === currentPlayer
+    board[0] === currentPlayer &&
+    board[5] === currentPlayer &&
+    board[10] === currentPlayer &&
+    board[15] === currentPlayer &&
+    board[20] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[1] === currentPlayer &&
-    gameState.board[6] === currentPlayer &&
-    gameState.board[11] === currentPlayer &&
-    gameState.board[16] === currentPlayer &&
-    gameState.board[21] === currentPlayer
+    board[1] === currentPlayer &&
+    board[6] === currentPlayer &&
+    board[11] === currentPlayer &&
+    board[16] === currentPlayer &&
+    board[21] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[2] === currentPlayer &&
-    gameState.board[7] === currentPlayer &&
-    gameState.board[12] === currentPlayer &&
-    gameState.board[17] === currentPlayer &&
-    gameState.board[22] === currentPlayer
+    board[2] === currentPlayer &&
+    board[7] === currentPlayer &&
+    board[12] === currentPlayer &&
+    board[17] === currentPlayer &&
+    board[22] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[3] === currentPlayer &&
-    gameState.board[8] === currentPlayer &&
-    gameState.board[13] === currentPlayer &&
-    gameState.board[18] === currentPlayer &&
-    gameState.board[23] === currentPlayer
+    board[3] === currentPlayer &&
+    board[8] === currentPlayer &&
+    board[13] === currentPlayer &&
+    board[18] === currentPlayer &&
+    board[23] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[4] === currentPlayer &&
-    gameState.board[9] === currentPlayer &&
-    gameState.board[14] === currentPlayer &&
-    gameState.board[19] === currentPlayer &&
-    gameState.board[24] === currentPlayer
+    board[4] === currentPlayer &&
+    board[9] === currentPlayer &&
+    board[14] === currentPlayer &&
+    board[19] === currentPlayer &&
+    board[24] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[0] === currentPlayer &&
-    gameState.board[1] === currentPlayer &&
-    gameState.board[2] === currentPlayer &&
-    gameState.board[3] === currentPlayer &&
-    gameState.board[4] === currentPlayer
+    board[0] === currentPlayer &&
+    board[1] === currentPlayer &&
+    board[2] === currentPlayer &&
+    board[3] === currentPlayer &&
+    board[4] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[5] === currentPlayer &&
-    gameState.board[6] === currentPlayer &&
-    gameState.board[7] === currentPlayer &&
-    gameState.board[8] === currentPlayer &&
-    gameState.board[9] === currentPlayer
+    board[5] === currentPlayer &&
+    board[6] === currentPlayer &&
+    board[7] === currentPlayer &&
+    board[8] === currentPlayer &&
+    board[9] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[10] === currentPlayer &&
-    gameState.board[11] === currentPlayer &&
-    gameState.board[12] === currentPlayer &&
-    gameState.board[13] === currentPlayer &&
-    gameState.board[14] === currentPlayer
+    board[10] === currentPlayer &&
+    board[11] === currentPlayer &&
+    board[12] === currentPlayer &&
+    board[13] === currentPlayer &&
+    board[14] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[15] === currentPlayer &&
-    gameState.board[16] === currentPlayer &&
-    gameState.board[17] === currentPlayer &&
-    gameState.board[18] === currentPlayer &&
-    gameState.board[19] === currentPlayer
+    board[15] === currentPlayer &&
+    board[16] === currentPlayer &&
+    board[17] === currentPlayer &&
+    board[18] === currentPlayer &&
+    board[19] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[20] === currentPlayer &&
-    gameState.board[21] === currentPlayer &&
-    gameState.board[22] === currentPlayer &&
-    gameState.board[23] === currentPlayer &&
-    gameState.board[24] === currentPlayer
+    board[20] === currentPlayer &&
+    board[21] === currentPlayer &&
+    board[22] === currentPlayer &&
+    board[23] === currentPlayer &&
+    board[24] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[0] === currentPlayer &&
-    gameState.board[6] === currentPlayer &&
-    gameState.board[12] === currentPlayer &&
-    gameState.board[18] === currentPlayer &&
-    gameState.board[24] === currentPlayer
+    board[0] &&
+    currentPlayer &&
+    board[6] &&
+    currentPlayer &&
+    board[12] &&
+    currentPlayer &&
+    board[18] &&
+    currentPlayer &&
+    board[24] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   } else if (
-    gameState.board[4] === currentPlayer &&
-    gameState.board[8] === currentPlayer &&
-    gameState.board[12] === currentPlayer &&
-    gameState.board[16] === currentPlayer &&
-    gameState.board[20] === currentPlayer
+    board[4] === currentPlayer &&
+    board[8] === currentPlayer &&
+    board[12] === currentPlayer &&
+    board[16] === currentPlayer &&
+    board[20] === currentPlayer
   ) {
-    gameWon = true;
+    return true;
   }
-}
+  return false;
+};
 
-function checkForWin() {
-  if (threeBoard === true) {
-    threeBoardWinConditons();
-  } else if (fourBoard === true) {
-    fourBoardWinConditions();
-  } else if (fiveBoard === true) {
-    fiveBoardWinConditions();
+let stupid;
+
+const checkForWin = (myStore) => {
+  console.log("Rules-BoardSize", myStore.boardSize);
+  switch (myStore.boardSize) {
+    case 1:
+      console.log("Getting to Case 1");
+      stupid = threeBoardWinConditons(myStore.currentPlayer, myStore.board);
+      console.log("case 1", stupid);
+      return stupid;
+    case 2:
+      return fourBoardWinConditions(myStore.currentPlayer, myStore.board);
+    case 3:
+      return fiveBoardWinConditions(myStore.currentPlayer, myStore.board);
+    default:
+      return false;
   }
-}
+};
+
+export { checkForWin };
