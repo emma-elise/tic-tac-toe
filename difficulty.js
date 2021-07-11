@@ -1,4 +1,4 @@
-import { checkForWin } from "./rules.js";
+import { checkForWin } from "./checkForWin.js";
 import styling from "./styling.js";
 
 let cpuIndex;

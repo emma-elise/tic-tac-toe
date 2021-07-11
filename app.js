@@ -1,4 +1,6 @@
-import { buildGrid, takeTurns, settings } from "./settings.js";
+import { settings } from "./settings.js";
+import { takeTurns } from "./turns.js";
+import { buildGrid } from "./grid.js";
 import { resetScore } from "./resetScore.js";
 
 var myStore = {
