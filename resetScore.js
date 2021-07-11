@@ -8,4 +8,4 @@ const resetScore = (myStore) => {
   });
 };
 
-export default resetScore;
+export { resetScore };

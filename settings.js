@@ -1,5 +1,5 @@
 import cpuTakesTurn from "./difficulty.js";
-import { checkForWin } from "./rules.js";
+import { checkForWin } from "./checkForWin.js";
 import styling from "./styling.js";
 
 const defaultSettings = (myStore) => {
