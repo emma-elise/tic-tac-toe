@@ -22,6 +22,7 @@ body {
   justify-content: center;
   background-image: url("chalkboard.jpg");
   color: white;
+  font-family: "Indie Flower";
 }
 
 body .top-layer {
@@ -35,17 +36,16 @@ body .top-layer {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  letter-spacing: 0.5rem;
-  font-family: "Akaya Kanadaka", cursive;
+  font-family: "Indie Flower";
 }
 
 body .top-layer h1 {
   font-size: 3rem;
-  margin-bottom: 2rem;
 }
 
-body .top-layer .player-turn {
+body .top-layer .winnerName {
   font-size: 1.5rem;
+  margin-top: 1rem;
   margin-bottom: 2rem;
 }
 
@@ -109,11 +109,11 @@ body .middle-layer #grid {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  background: #ccc;
+  cursor: pointer;
 }
 
 body .middle-layer #grid .cell {
-  border: 2px solid black;
+  border: 2px solid white;
 }
 
 body .middle-layer #board-size {
@@ -159,8 +159,7 @@ body .middle-layer #board-size #randomBoard {
 
 body .bottom-layer {
   font-size: 2rem;
-  letter-spacing: 0.5rem;
-  font-family: "Akaya Kanadaka", cursive;
+  font-family: "Indie Flower";
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -174,6 +173,7 @@ body .bottom-layer {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  letter-spacing: normal;
 }
 
 body .bottom-layer .top {
@@ -228,15 +228,19 @@ body .bottom-layer .bottom .oScore {
   margin-left: 2rem;
 }
 
+body .change-settings {
+  display: flex;
+}
+
 body .change-settings #reset,
 body .change-settings #settings {
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 7rem;
+  height: 7rem;
   margin: auto;
-  margin-top: 0.75rem;
+  margin-top: 2rem;
   margin-bottom: 0.75rem;
   color: #fff;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0);
   border-radius: 10px;
   border: solid 2px #fff;
   -webkit-box-orient: horizontal;
@@ -248,6 +252,9 @@ body .change-settings #settings {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  font-family: "Indie Flower";
+  font-size: 1.75rem;
+  cursor: pointer;
 }
 
 body .change-settings #reset {

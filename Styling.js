@@ -2,9 +2,9 @@ let styling = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  fontSize: "36px",
+  fontSize: "5rem",
   fontWeight: "bold",
-  color: "black",
+  color: "white",
 };
 
 export default styling;

@@ -8,6 +8,7 @@ const threeBoardWinConditions = (currentPlayer, board) => {
     board[1] === currentPlayer &&
     board[2] === currentPlayer
   ) {
+    // displayWinner(myStore);
     valid = true;
     return valid;
   } else if (
@@ -15,6 +16,7 @@ const threeBoardWinConditions = (currentPlayer, board) => {
     board[4] === currentPlayer &&
     board[5] === currentPlayer
   ) {
+    // displayWinner(myStore);
     valid = true;
     return valid;
   } else if (
@@ -22,6 +24,7 @@ const threeBoardWinConditions = (currentPlayer, board) => {
     board[7] === currentPlayer &&
     board[8] === currentPlayer
   ) {
+    // displayWinner(myStore);
     valid = true;
     return valid;
   } else if (
@@ -29,6 +32,7 @@ const threeBoardWinConditions = (currentPlayer, board) => {
     board[3] === currentPlayer &&
     board[6] === currentPlayer
   ) {
+    // displayWinner(myStore);
     valid = true;
     return valid;
   } else if (
@@ -36,6 +40,7 @@ const threeBoardWinConditions = (currentPlayer, board) => {
     board[4] === currentPlayer &&
     board[7] === currentPlayer
   ) {
+    // displayWinner(myStore);
     valid = true;
     return valid;
   } else if (
@@ -43,6 +48,7 @@ const threeBoardWinConditions = (currentPlayer, board) => {
     board[5] === currentPlayer &&
     board[8] === currentPlayer
   ) {
+    // displayWinner(myStore);
     valid = true;
     return valid;
   } else if (
@@ -50,6 +56,7 @@ const threeBoardWinConditions = (currentPlayer, board) => {
     board[4] === currentPlayer &&
     board[8] === currentPlayer
   ) {
+    // displayWinner(myStore);
     valid = true;
     return valid;
   } else if (
@@ -57,6 +64,7 @@ const threeBoardWinConditions = (currentPlayer, board) => {
     board[4] === currentPlayer &&
     board[6] === currentPlayer
   ) {
+    // displayWinner(myStore);
     valid = true;
     return valid;
   }
@@ -244,6 +252,16 @@ const fiveBoardWinConditions = (currentPlayer, board) => {
 };
 
 let stupid;
+
+const displayWinner = (myStore) => {
+  // myStore.winnerName = myStore.currentPlayerName;
+  // $(".winnerName").text(`${myStore.winnerName} is the winner!`);
+  // if (myStore.turnNumber % 2 === 0) {
+  //   myStore.secondPlayerScore++;
+  // } else {
+  //   myStore.firstPlayerScore++;
+  // }
+};
 
 const checkForWin = (myStore) => {
   console.log("Rules-BoardSize", myStore.boardSize);

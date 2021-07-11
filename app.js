@@ -9,6 +9,7 @@ var myStore = {
   xSelected: false,
   currentPlayer: "X",
   currentPlayerName: "Player One",
+  winnerName: "",
   player: "",
   cpu: "",
   currentIndex: 0,
@@ -18,13 +19,23 @@ var myStore = {
   secondPlayerName: "Computer",
   firstPlayerScore: 0,
   secondPlayerScore: 0,
+  drawCount: 0,
   xOrOCheck: "X",
   sizeCheck: 9,
   difficultyCheck: "easy",
   board: [null, null, null, null, null, null, null, null, null],
 };
 
-console.log("myStore", myStore);
+console.log("winner name is", myStore.winnerName);
+
+const resetScore = (myStore) => {
+  $("#reset").click(function () {
+    myStore.firstPlayerScore = 0;
+    myStore.secondPlayerScore = 0;
+    myStore.drawCount = 0;
+    console.log("reset button pushed");
+  });
+};
 
 const buildGame = (myStore) => {
   applySettings(myStore);
@@ -38,6 +49,7 @@ const buildGame = (myStore) => {
   }
 };
 
+resetScore(myStore);
 buildGame(myStore);
 
 export { myStore };

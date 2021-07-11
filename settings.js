@@ -61,10 +61,11 @@ const confirmSettings = (myStore) => {
     };
   }
 
-  $(".player-turn").text(`${myStore.currentPlayerName}'s Turn`);
-  $(".xScore").text(`${myStore.firstPlayerName}: ${myStore.firstPlayerScore}`);
+  $(".winnerName").text(`${myStore.currentPlayerName} is the winner!`);
+  $(".xScore").text(`${myStore.firstPlayerName} : ${myStore.firstPlayerScore}`);
+  $(".draw").text(`Draw : ${myStore.drawCount}`);
   $(".oScore").text(
-    `${myStore.secondPlayerName}: ${myStore.secondPlayerScore}`
+    `${myStore.secondPlayerName} : ${myStore.secondPlayerScore}`
   );
 };
 
