@@ -45,9 +45,8 @@
         <button class="btn button-default" id="twoPlayer">Two</br>Player</button>
       </div> -->
       <div class="bottom">
-        <div class="xScore">X Wins: 0</div>
-        <div class="draw">Draw : 0</div>
-        <div class="oScore">O Wins: 0</div>
+        <div class="xScore"></div>
+        <div class="oScore"></div>
       </div>
     </div>
     <div class="change-settings">
@@ -57,38 +56,32 @@
     <div id="myModal" class="modal">
       <div class="modal-content">
         <form id="form" action="" method="">
-          <p>Number of Players</p><br>
-          <!-- <input type="radio" id="onePlayer" name="players"> -->
-          <input type="radio" id="onePlayer" name="players" value="1" checked>
-          <label for="players">One</label><br>
-          <input type="radio" id="twoPlayers" name="players" value="2">
-          <label for="players">Two</label><br><br>
-          <label for="oneName">First Player Name:</label>
-          <input type="text" id="oneName" name="oneName" value="Player One"><br><br>
-          <label for="twoName">Second Player Name:</label>
-          <input type="text" id="twoName" name="twoName" value="Computer"><br>
-          <br><p>Choose X or O (Player One)</p><br> 
-          <!-- <input type="radio" id="xChosen" name="xOrO"> -->
-          <input type="radio" id="xChosen" name="xOrO" value="X" checked>
-          <label for="xOrO">X</label><br>
-          <input type="radio" id="oChosen" name="xOrO" value="O">
-          <label for="xOrO">O</label><br><br>
-          <br><p>Size of Board</p><br> 
-          <input type="radio" id="threeBoard" name="boardSize" value="9" checked>
-          <!-- <input type="radio" id="threeBoard" name="boardSize"> -->
-          <label for="boardSize">3x3</label><br>
-          <input type="radio" id="fourBoard" name="boardSize" value="16">
-          <label for="boardSize">4x4</label><br>
-          <input type="radio" id="fiveBoard" name="boardSize" value="25">
-          <label for="boardSize">5x5</label><br><br>
-          <br><p>Difficulty</p><br> 
-          <input type="radio" id="easyMode" name="difficulty" value="easy" checked>
-          <!-- <input type="radio" id="easyMode" name="difficulty"> -->
-          <label for="difficulty">Easy</label><br>
-          <!-- <input type="radio" id="mediumMode" name="difficulty" value="medium">
-          <label for="difficulty">Medium</label><br> -->
-          <input type="radio" id="hardMode" name="difficulty" value="hard">
-          <label for="difficulty">Hard</label><br><br>
+          <p>Number of Players:
+            <input type="radio" id="onePlayer" name="players" value="1" checked>
+            <label for="players">One</label>
+            <input type="radio" id="twoPlayers" name="players" value="2">
+            <label for="players">Two</label>
+          </p>
+          <p><label for="oneName">First Player Name:</label>
+            <input type="text" id="oneName" name="oneName" value="Player One">
+          </p>
+          <p><label for="twoName">Second Player Name:</label>
+            <input type="text" id="twoName" name="twoName" value="Computer">
+          </p>
+          <p>Choose X or O (Player One):
+            <input type="radio" id="xChosen" name="xOrO" value="X" checked>
+            <label for="xOrO">X</label>
+            <input type="radio" id="oChosen" name="xOrO" value="O">
+            <label for="xOrO">O</label>
+          </p> 
+          <p>Size of Board
+            <input type="radio" id="threeBoard" name="boardSize" value="9" checked>
+            <label for="boardSize">3x3</label>
+            <input type="radio" id="fourBoard" name="boardSize" value="16">
+            <label for="boardSize">4x4</label>
+            <input type="radio" id="fiveBoard" name="boardSize" value="25">
+            <label for="boardSize">5x5</label>
+          </p>
           <button class="action confirmSettings" id="confirmSettings">Confirm</button>
         </form>
       </div>

@@ -2,7 +2,7 @@ let styling = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  fontSize: "5rem",
+  fontSize: "3.5rem",
   fontWeight: "bold",
   color: "white",
 };

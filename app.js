@@ -1,4 +1,5 @@
-import { applySettings, buildGrid, takeTurns } from "./settings.js";
+import { buildGrid, takeTurns, settings } from "./settings.js";
+import { resetScore } from "./resetScore.js";
 
 var myStore = {
   gameWon: false,
@@ -6,7 +7,7 @@ var myStore = {
   turnNumber: 0,
   gameActive: false,
   oSelected: false,
-  xSelected: false,
+  xSelected: true,
   currentPlayer: "X",
   currentPlayerName: "Player One",
   winnerName: "",
@@ -19,37 +20,25 @@ var myStore = {
   secondPlayerName: "Computer",
   firstPlayerScore: 0,
   secondPlayerScore: 0,
-  drawCount: 0,
   xOrOCheck: "X",
   sizeCheck: 9,
-  difficultyCheck: "easy",
   board: [null, null, null, null, null, null, null, null, null],
 };
 
-console.log("winner name is", myStore.winnerName);
-
-const resetScore = (myStore) => {
-  $("#reset").click(function () {
-    myStore.firstPlayerScore = 0;
-    myStore.secondPlayerScore = 0;
-    myStore.drawCount = 0;
-    console.log("reset button pushed");
-  });
-};
-
 const buildGame = (myStore) => {
-  applySettings(myStore);
-  console.log("Do we hit this?");
   buildGrid(myStore);
-  takeTurns(myStore);
-  if (myStore.settingsChosen === false || myStore.gameWon === false) {
+  if (myStore.settingsChosen === false && myStore.gameWon === false) {
+    takeTurns(myStore);
     return;
-  } else {
-    buildGrid(myStore);
   }
 };
 
-resetScore(myStore);
-buildGame(myStore);
+const resetGame = (myStore) => {
+  buildGame(myStore);
+};
 
-export { myStore };
+settings(myStore);
+buildGame(myStore);
+resetScore(myStore);
+
+export { myStore, resetGame };

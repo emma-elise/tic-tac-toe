@@ -2,38 +2,63 @@ import cpuTakesTurn from "./difficulty.js";
 import { checkForWin } from "./rules.js";
 import styling from "./styling.js";
 
-const openSettings = (myStore) => {
+const defaultSettings = (myStore) => {
+  myStore = {
+    ...myStore,
+    gameWon: false,
+    settingsChosen: false,
+    turnNumber: 0,
+    gameActive: false,
+    currentIndex: 0,
+  };
+};
+
+const chooseSettings = (myStore) => {
   $("#settings").click(function () {
     myStore = {
       ...myStore,
       settingsChosen: false,
     };
-    //settingsChosen = false;
+    console.log("settingsChosen is " + myStore.settingsChosen);
     $(".modal").css({ display: "block", visibility: "visible" });
   });
 
   document.onkeydown = function (event) {
     event = event || window.event;
-    if (event.key == escape) {
+    if (event.key === "Escape") {
       $(".modal").css({ display: "none", visibility: "none" });
     }
   };
-};
 
-const confirmSettings = (myStore) => {
   $("#confirmSettings").click(function () {
-    //event.preventDefault();
+    event.preventDefault();
+    // event.preventDefault();
+    // stopPropagation();
     myStore = {
       ...myStore,
       playerCount: $("input[name='players']:checked").val(),
       xOrOCheck: $("input[name='xOrO']:checked").val(),
       sizeCheck: $("input[name='boardSize']:checked").val(),
-      difficultyCheck: $("input[name='difficulty']:checked").val(),
       firstPlayerName: $("input[name='oneName']").val(),
       secondPlayerName: $("input[name='twoName']").val(),
+      settingsChosen: true,
     };
-    // $(".modal").css({ display: "none", visibility: "none" });
+    // applySettings();
+    $(".modal").css({ display: "none", visibility: "none" });
+    console.log(myStore);
   });
+};
+
+const applySettings = (myStore) => {
+  // myStore = {
+  //   ...myStore,
+  //   settingsChosen: true,
+  // };
+
+  $(".xScore").text(`${myStore.firstPlayerName} : ${myStore.firstPlayerScore}`);
+  $(".oScore").text(
+    `${myStore.secondPlayerName} : ${myStore.secondPlayerScore}`
+  );
 
   if (myStore.xOrOCheck === "X") {
     myStore.xSelected === true;
@@ -42,73 +67,59 @@ const confirmSettings = (myStore) => {
   }
 
   if (myStore.sizeCheck === 9) {
-    console.log("9");
     myStore = {
       ...myStore,
       boardSize: 1,
     };
   } else if (myStore.sizeCheck === 16) {
-    console.log("16");
     myStore = {
       ...myStore,
       boardSize: 2,
     };
   } else if (myStore.sizeCheck === 25) {
-    console.log("25");
     myStore = {
       ...myStore,
       boardSize: 3,
     };
   }
-
-  $(".winnerName").text(`${myStore.currentPlayerName} is the winner!`);
-  $(".xScore").text(`${myStore.firstPlayerName} : ${myStore.firstPlayerScore}`);
-  $(".draw").text(`Draw : ${myStore.drawCount}`);
-  $(".oScore").text(
-    `${myStore.secondPlayerName} : ${myStore.secondPlayerScore}`
-  );
-};
-
-const applySettings = (myStore) => {
-  myStore = {
-    ...myStore,
-    settingsChosen: true,
-  };
-  openSettings(myStore);
-  confirmSettings(myStore);
-  console.log("ApplySettings");
+  console.log("settingsChosen is " + myStore.settingsChosen);
+  chooseSettings(myStore);
 };
 
 const buildGrid = (myStore) => {
-  console.log("Am I firing?");
+  console.log("Grid is firing");
   $("#grid .cell").remove();
-
   for (let i = 0; i < myStore.board.length; i++) {
-    myStore.board.splice(myStore.board[i], 1, null);
     $("#grid").append($('<div class="cell"></div>'));
-    switch (myStore.boardSize) {
-      case 1:
-        $("#grid .cell").css({
-          flex: "1 0 170.67px",
-        });
-        break;
-      case 2:
-        $("#grid .cell").css({
-          flex: "0 0 128px",
-        });
-        break;
-      case 3:
-        $("#grid .cell").css({
-          flex: "0 0 102.4px",
-        });
-        break;
-    }
+  }
+  myStore.board.forEach(function (cell, index) {
+    myStore.board[index] = null;
+  });
+  console.log(myStore.board);
+
+  switch (myStore.boardSize) {
+    case 1:
+      $("#grid .cell").css({
+        flex: "1 0 170.67px",
+      });
+      break;
+    case 2:
+      $("#grid .cell").css({
+        flex: "0 0 128px",
+      });
+      break;
+    case 3:
+      $("#grid .cell").css({
+        flex: "0 0 102.4px",
+      });
+      break;
   }
 };
 
 const turnOrder = (myStore) => {
-  let name = myStore.currentPlayerName;
-  if (myStore.turnNumber === 0 && !myStore.settingsChosen) {
+  $(".winnerName").text(`No winner yet...`);
+  // if (myStore.turnNumber === 0 && !myStore.settingsChosen) {
+  if (myStore.turnNumber === 0) {
     name = myStore.firstPlayerName;
     return "X";
   } else if (myStore.turnNumber % 2 === 0) {
@@ -166,6 +177,8 @@ const takeTurns = (myStore) => {
       $(this).html(myStore.player).css(styling);
       myStore.board.splice(myStore.currentIndex, 1, myStore.player);
       console.log("board size", myStore.boardSize);
+      console.log("Turn is firing", myStore.board);
+
       let newNewValue = checkForWin(myStore);
       myStore = {
         ...myStore,
@@ -180,4 +193,10 @@ const takeTurns = (myStore) => {
   counter(myStore);
 };
 
-export { applySettings, confirmSettings, buildGrid, takeTurns };
+const settings = (myStore) => {
+  defaultSettings(myStore);
+  chooseSettings(myStore);
+  applySettings(myStore);
+};
+
+export { settings, buildGrid, takeTurns };
