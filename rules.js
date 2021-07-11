@@ -2,7 +2,7 @@ import { myStore } from "./app.js";
 
 let valid = false;
 
-const threeBoardWinConditons = (currentPlayer, board) => {
+const threeBoardWinConditions = (currentPlayer, board) => {
   if (
     board[0] === currentPlayer &&
     board[1] === currentPlayer &&
@@ -250,7 +250,7 @@ const checkForWin = (myStore) => {
   switch (myStore.boardSize) {
     case 1:
       console.log("Getting to Case 1");
-      stupid = threeBoardWinConditons(myStore.currentPlayer, myStore.board);
+      stupid = threeBoardWinConditions(myStore.currentPlayer, myStore.board);
       console.log("case 1", stupid);
       return stupid;
     case 2:

@@ -1,5 +1,5 @@
 import { checkForWin } from "./rules.js";
-import styling from "./Styling.js";
+import styling from "./styling.js";
 
 let cpuIndex;
 

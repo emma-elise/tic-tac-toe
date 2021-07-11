@@ -1,6 +1,6 @@
 import cpuTakesTurn from "./difficulty.js";
 import { checkForWin } from "./rules.js";
-import styling from "./Styling.js";
+import styling from "./styling.js";
 
 const openSettings = (myStore) => {
   $("#settings").click(function () {
@@ -60,6 +60,12 @@ const confirmSettings = (myStore) => {
       boardSize: 3,
     };
   }
+
+  $(".player-turn").text(`${myStore.currentPlayerName}'s Turn`);
+  $(".xScore").text(`${myStore.firstPlayerName}: ${myStore.firstPlayerScore}`);
+  $(".oScore").text(
+    `${myStore.secondPlayerName}: ${myStore.secondPlayerScore}`
+  );
 };
 
 const applySettings = (myStore) => {
@@ -67,7 +73,6 @@ const applySettings = (myStore) => {
     ...myStore,
     settingsChosen: true,
   };
-  //settingsChosen = true;
   openSettings(myStore);
   confirmSettings(myStore);
   console.log("ApplySettings");
@@ -101,11 +106,15 @@ const buildGrid = (myStore) => {
 };
 
 const turnOrder = (myStore) => {
+  let name = myStore.currentPlayerName;
   if (myStore.turnNumber === 0 && !myStore.settingsChosen) {
+    name = myStore.firstPlayerName;
     return "X";
   } else if (myStore.turnNumber % 2 === 0) {
+    name = myStore.firstPlayerName;
     return "O";
   }
+  name = myStore.secondPlayerName;
   return "X";
 };
 
