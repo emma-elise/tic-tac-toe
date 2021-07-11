@@ -1,36 +1,37 @@
 import { settings } from "./settings.js";
-import { takeTurns } from "./turns.js";
+import { takeTurn } from "./turn.js";
 import { buildGrid } from "./grid.js";
 import { resetScore } from "./resetScore.js";
 
 var myStore = {
-  gameWon: false,
-  settingsChosen: false,
-  turnNumber: 0,
-  gameActive: false,
-  oSelected: false,
-  xSelected: true,
-  currentPlayer: "X",
-  currentPlayerName: "Player One",
-  winnerName: "",
-  player: "",
+  board: [null, null, null, null, null, null, null, null, null],
+  boardSize: 1,
   cpu: "",
   currentIndex: 0,
-  boardSize: 1,
-  playerCount: 1,
+  currentPlayer: "X",
+  currentPlayerName: "Player One",
   firstPlayerName: "Player One",
-  secondPlayerName: "Computer",
   firstPlayerScore: 0,
+  gameActive: false,
+  gameWon: false,
+  oSelected: false,
+  player: "",
+  playerCount: 1,
+  secondPlayerName: "Computer",
   secondPlayerScore: 0,
-  xOrOCheck: "X",
+  settingsChosen: false,
   sizeCheck: 9,
-  board: [null, null, null, null, null, null, null, null, null],
+  turnNumber: 0,
+  winnerName: "",
+  xOrOCheck: "X",
+  xSelected: true,
 };
 
 const buildGame = (myStore) => {
+  settings(myStore);
   buildGrid(myStore);
   if (myStore.settingsChosen === false && myStore.gameWon === false) {
-    takeTurns(myStore);
+    takeTurn(myStore);
     return;
   }
 };

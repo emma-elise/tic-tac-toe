@@ -1,34 +1,11 @@
 import { resetGame } from "./app.js";
 import { winConditions } from "./winConditions.js";
 
-const displayWinner = (myStore) => {
-  myStore.winnerName = myStore.currentPlayerName;
-  $(".winnerName").text(`${myStore.winnerName} is the winner!`);
-  if (myStore.turnNumber % 2 === 0) {
-    myStore.secondPlayerScore++;
-    $(".oScore").text(
-      `${myStore.secondPlayerName} : ${myStore.secondPlayerScore}`
-    );
-  } else {
-    myStore.firstPlayerScore++;
-    $(".xScore").text(
-      `${myStore.firstPlayerName} : ${myStore.firstPlayerScore}`
-    );
-  }
-};
-
-const checkForDraw = (myStore) => {
-  if (myStore.board.includes(null) === false) {
-    $(".winnerName").text(`Draw! Try again.`);
-    console.log("draw");
-  }
-  setTimeout(resetGame(myStore), 250);
-};
-
 const checkForWin = (myStore) => {
   if (myStore.board.includes(null) === false) {
     $(".winnerName").text(`Draw! Try again.`);
     console.log("draw");
+    setTimeout(resetGame(myStore), 250);
   }
   switch (myStore.boardSize) {
     case 1:
@@ -42,4 +19,4 @@ const checkForWin = (myStore) => {
   }
 };
 
-export { checkForWin, displayWinner, checkForDraw };
+export { checkForWin };

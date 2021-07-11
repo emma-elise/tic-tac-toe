@@ -6,13 +6,10 @@ const turnOrder = (myStore) => {
   $(".winnerName").text(`No winner yet...`);
   // if (myStore.turnNumber === 0 && !myStore.settingsChosen) {
   if (myStore.turnNumber === 0) {
-    name = myStore.firstPlayerName;
     return "X";
   } else if (myStore.turnNumber % 2 === 0) {
-    name = myStore.firstPlayerName;
     return "O";
   }
-  name = myStore.secondPlayerName;
   return "X";
 };
 
@@ -24,7 +21,7 @@ const counter = (myStore) => {
   };
 };
 
-const takeTurns = (myStore) => {
+const turnMove = (myStore) => {
   $(".cell").click(function () {
     let value = $(".cell").index(this);
     myStore = {
@@ -37,14 +34,12 @@ const takeTurns = (myStore) => {
         player: "X",
       };
     }
-
     if (!myStore.cpu) {
       myStore = {
         ...myStore,
         cpu: "O",
       };
     }
-
     if (
       myStore.board[myStore.currentIndex] === myStore.player ||
       myStore.board[myStore.currentIndex] === myStore.cpu
@@ -79,4 +74,9 @@ const takeTurns = (myStore) => {
   counter(myStore);
 };
 
-export { takeTurns, turnOrder };
+const takeTurn = (myStore) => {
+  turnOrder(myStore);
+  turnMove(myStore);
+};
+
+export { takeTurn };

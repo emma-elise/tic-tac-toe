@@ -1,5 +1,5 @@
 import { myStore, resetGame } from "./app.js";
-import { displayWinner } from "./checkForWin.js";
+import { displayWinner } from "./displayWinner.js";
 
 let winConditions = {
   threeBoard: function (currentPlayer, board) {
@@ -59,7 +59,7 @@ let winConditions = {
     ) {
       displayWinner(myStore);
     }
-    return;
+    return false;
   },
 
   fourBoard: function (currentPlayer, board) {
