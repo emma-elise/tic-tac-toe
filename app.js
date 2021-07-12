@@ -14,34 +14,28 @@ var myStore = {
   firstPlayerScore: 0,
   gameActive: false,
   gameWon: false,
-  oSelected: false,
   player: "",
   playerCount: 1,
   secondPlayerName: "Computer",
   secondPlayerScore: 0,
-  settingsChosen: false,
-  sizeCheck: 9,
   turnNumber: 0,
   winnerName: "",
-  xOrOCheck: "X",
-  xSelected: true,
 };
 
+console.log(myStore);
+
 const buildGame = (myStore) => {
+  myStore.board.forEach(function (cell, index) {
+    myStore.board[index] = null;
+  });
   settings(myStore);
   buildGrid(myStore);
-  if (myStore.settingsChosen === false && myStore.gameWon === false) {
-    takeTurn(myStore);
-    return;
+  while (!myStore.gameWon || myStore.settingsChanged) {
+    return takeTurn(myStore);
   }
 };
 
-const resetGame = (myStore) => {
-  buildGame(myStore);
-};
-
-settings(myStore);
-buildGame(myStore);
 resetScore(myStore);
+buildGame(myStore);
 
-export { myStore, resetGame };
+export { myStore, buildGame };

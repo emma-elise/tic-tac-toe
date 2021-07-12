@@ -1,3 +1,5 @@
+import { buildGame as resetGame } from "./app.js";
+
 const resetScore = (myStore) => {
   $("#reset").click(function () {
     console.log("reset score clicked");
@@ -5,6 +7,7 @@ const resetScore = (myStore) => {
     myStore.secondPlayerScore = 0;
     $(".xScore").text(`${myStore.firstPlayerName} : 0`);
     $(".oScore").text(`${myStore.secondPlayerName} : 0`);
+    resetGame(myStore);
   });
 };
 

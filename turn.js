@@ -3,14 +3,15 @@ import { checkForWin } from "./checkForWin.js";
 import cpuTakesTurn from "./difficulty.js";
 
 const turnOrder = (myStore) => {
-  $(".winnerName").text(`No winner yet...`);
-  // if (myStore.turnNumber === 0 && !myStore.settingsChosen) {
   if (myStore.turnNumber === 0) {
-    return "X";
+    myStore.currentPlayer === "X";
   } else if (myStore.turnNumber % 2 === 0) {
-    return "O";
+    myStore.currentPlayerName = myStore.secondPlayerName;
+    myStore.cpu = "O";
+  } else {
+    myStore.currentPlayerName = myStore.firstPlayerName;
+    myStore.currentPlayer = "X";
   }
-  return "X";
 };
 
 const counter = (myStore) => {
@@ -19,10 +20,12 @@ const counter = (myStore) => {
     ...myStore,
     turnNumber: value,
   };
+  console.log(myStore.turnNumber);
 };
 
-const turnMove = (myStore) => {
+const playerTakesTurn = (myStore) => {
   $(".cell").click(function () {
+    $(".winnerName").text(`No winner yet...`);
     let value = $(".cell").index(this);
     myStore = {
       ...myStore,
@@ -47,36 +50,23 @@ const turnMove = (myStore) => {
       return;
     } else {
       if (myStore.gameWon) return;
-      if (!myStore.oSelected) {
-        let newValue = turnOrder(myStore);
-        myStore = {
-          ...myStore,
-          currentPlayer: newValue,
-          gameActive: true,
-        };
-      }
       $(this).html(myStore.player).css(styling);
       myStore.board.splice(myStore.currentIndex, 1, myStore.player);
-      console.log("board size", myStore.boardSize);
-      console.log("Turn is firing", myStore.board);
-
-      let newNewValue = checkForWin(myStore);
-      myStore = {
-        ...myStore,
-        gameWon: newNewValue,
-      };
-      //gameWon = checkForWin(boardSize, currentPlayer);
-      if (!myStore.gameWon && myStore.playerCount === 1) {
-        cpuTakesTurn(myStore);
-      }
+      counter(myStore);
+    }
+    if (!myStore.gameWon && myStore.playerCount === 1) {
+      cpuTakesTurn(myStore);
+    } else if (!myStore.gameWon && myStore.playerCount === 2) {
+      playerTakesTurn(myStore);
+      console.log("else");
     }
   });
-  counter(myStore);
 };
 
 const takeTurn = (myStore) => {
   turnOrder(myStore);
-  turnMove(myStore);
+  playerTakesTurn(myStore);
+  //   turnMove(myStore);
 };
 
-export { takeTurn };
+export { takeTurn, counter, turnOrder };

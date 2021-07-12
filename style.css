@@ -59,48 +59,6 @@ body .middle-layer {
   flex-direction: row;
 }
 
-body .middle-layer #turn-order {
-  font-size: 3rem;
-  letter-spacing: 0.5rem;
-  font-family: "Akaya Kanadaka", cursive;
-  margin-right: 2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-}
-
-body .middle-layer #turn-order #xButton,
-body .middle-layer #turn-order #oButton,
-body .middle-layer #turn-order #rButton {
-  width: 4.5rem;
-  height: 4.5rem;
-  margin: auto;
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
-  color: #fff;
-  background-color: #000;
-  border-radius: 10px;
-  border: solid 2px #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
 body .middle-layer #grid {
   width: 512px;
   height: 512px;
@@ -114,47 +72,6 @@ body .middle-layer #grid {
 
 body .middle-layer #grid .cell {
   border: 2px solid white;
-}
-
-body .middle-layer #board-size {
-  font-size: 3rem;
-  letter-spacing: 0.5rem;
-  font-family: "Akaya Kanadaka", cursive;
-  margin-right: 2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-}
-
-body .middle-layer #board-size #smallBoard,
-body .middle-layer #board-size #mediumBoard,
-body .middle-layer #board-size #largeBoard,
-body .middle-layer #board-size #randomBoard {
-  width: 4.5rem;
-  height: 4.5rem;
-  margin: auto;
-  margin-left: 2rem;
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
-  color: #fff;
-  background-color: #000;
-  border-radius: 10px;
-  border: solid 2px #fff;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
 }
 
 body .bottom-layer {
@@ -174,37 +91,6 @@ body .bottom-layer {
   -ms-flex-pack: center;
   justify-content: center;
   letter-spacing: normal;
-}
-
-body .bottom-layer .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-body .bottom-layer .top #onePlayer,
-body .bottom-layer .top #twoPlayer {
-  width: 4.5rem;
-  height: 4.5rem;
-  color: #fff;
-  background-color: #000;
-  border-radius: 10px;
-  border: solid 2px #fff;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-body .bottom-layer .top #onePlayer {
-  margin-right: 3rem;
-}
-
-body .bottom-layer .top #twoPlayer {
-  margin-left: 3rem;
 }
 
 body .bottom-layer .bottom {

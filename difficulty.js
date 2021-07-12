@@ -1,4 +1,5 @@
 import { checkForWin } from "./checkForWin.js";
+import { counter } from "./turn.js";
 import styling from "./styling.js";
 
 let cpuIndex;
@@ -13,7 +14,9 @@ const difficulty = (myStore) => {
 };
 
 const cpuTakesTurn = (myStore) => {
+  counter(myStore);
   difficulty(myStore);
+  // turnOrder(myStore);
   checkForWin(myStore);
 };
 

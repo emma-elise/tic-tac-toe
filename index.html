@@ -19,11 +19,6 @@
     <h1>Tic Tac Toe</h1>
     <div class="winnerName">No winner yet...</div>
     <div class="middle-layer">
-      <!-- <div id="turn-order">
-        <button class="btn button-default" id="xButton">X</button>
-        <button class="btn button-default" id="oButton">O</button>
-        <button class="btn button-default" id="rButton">Random</button>
-      </div> -->
       <div id="box">
         <div id="box-grid">
           <section id="grid"></section>
@@ -32,18 +27,8 @@
           <div class="grid-large"></div>
         </div>
       </div>
-      <!-- <div id="board-size">
-        <button class="btn button-default" id="smallBoard">3x3</button>
-        <button class="btn button-default" id="mediumBoard">4x4</button>
-        <button class="btn button-default" id="largeBoard">5x5</button>
-        <button class="btn button-default" id="randomBoard">Random</button>
-      </div> -->
     </div>
     <div class="bottom-layer">
-      <!-- <div class="top">
-        <button class="btn button-default" id="onePlayer">Single</br>Player</button>
-        <button class="btn button-default" id="twoPlayer">Two</br>Player</button>
-      </div> -->
       <div class="bottom">
         <div class="xScore"></div>
         <div class="oScore"></div>
@@ -62,25 +47,11 @@
             <input type="radio" id="twoPlayers" name="players" value="2">
             <label for="players">Two</label>
           </p>
-          <p><label for="oneName">First Player Name:</label>
+          <p><label for="oneName">First Player (X) Name:</label>
             <input type="text" id="oneName" name="oneName" value="Player One">
           </p>
-          <p><label for="twoName">Second Player Name:</label>
+          <p><label for="twoName">Second Player (O) Name:</label>
             <input type="text" id="twoName" name="twoName" value="Computer">
-          </p>
-          <p>Choose X or O (Player One):
-            <input type="radio" id="xChosen" name="xOrO" value="X" checked>
-            <label for="xOrO">X</label>
-            <input type="radio" id="oChosen" name="xOrO" value="O">
-            <label for="xOrO">O</label>
-          </p> 
-          <p>Size of Board
-            <input type="radio" id="threeBoard" name="boardSize" value="9" checked>
-            <label for="boardSize">3x3</label>
-            <input type="radio" id="fourBoard" name="boardSize" value="16">
-            <label for="boardSize">4x4</label>
-            <input type="radio" id="fiveBoard" name="boardSize" value="25">
-            <label for="boardSize">5x5</label>
           </p>
           <button class="action confirmSettings" id="confirmSettings">Confirm</button>
         </form>
